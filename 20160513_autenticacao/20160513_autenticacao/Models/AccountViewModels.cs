@@ -79,6 +79,18 @@ namespace _20160513_autenticacao.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        ///////////////////////////////////////////////////////
+        // adicionar os atributos especificos do USER
+
+        [Display(Name = "Nome próprio")]
+        [Required]
+        public string NomeProprio { get; set; }
+
+        [Required]
+        public string Apelido { get; set; }
+
+        public string NIF { get; set; }
     }
 
     public class ResetPasswordViewModel

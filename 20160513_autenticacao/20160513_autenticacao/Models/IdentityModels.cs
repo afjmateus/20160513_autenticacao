@@ -28,6 +28,10 @@ namespace _20160513_autenticacao.Models {
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser> {
+        //classe que vai gerar uma base de dados
+
+        //*******************
+        // construtores
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false) {
         }
@@ -35,5 +39,12 @@ namespace _20160513_autenticacao.Models {
         public static ApplicationDbContext Create() {
             return new ApplicationDbContext();
         }
+        //*******************
+
+        // adicionar as instruções para criar as tabelas
+        public virtual DbSet<Animais> Animais { get; set; }
+        public virtual DbSet<Donos> Donos { get; set; }
+        public virtual DbSet<Consultas> Consultas { get; set; }
+        public virtual DbSet<Veterinarios> Veterinarios { get; set; }
     }
 }

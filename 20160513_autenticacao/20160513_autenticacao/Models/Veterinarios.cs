@@ -7,6 +7,12 @@ using System.Web;
 
 namespace _20160513_autenticacao.Models {
     public class Veterinarios {
+
+        // criar o construtor desta classe e carregar a lista de Consultas
+        public Veterinarios() {
+            ListaDeConsultas = new HashSet<Consultas>();
+        }
+
         [Key]
         public int VeterinarioID { get; set; }
 
@@ -46,5 +52,8 @@ namespace _20160513_autenticacao.Models {
         [Required]
         [StringLength(50)]
         public string Faculdade { get; set; }
+
+        // especificar que um Animal tem muitas Consultas
+        public ICollection<Consultas> ListaDeConsultas { get; set; }
     }
 }

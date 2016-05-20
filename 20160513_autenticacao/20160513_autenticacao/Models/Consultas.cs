@@ -13,5 +13,22 @@ namespace _20160513_autenticacao.Models {
         [Column(TypeName = "date")] // só recolhe datas, não horas
         public DateTime DataConsulta { get; set; }
 
+        //**********************************
+        // criar a chave forasteira
+        // relaciona o objecto CONSULTA com um objecto ANIMAL
+        public Animais Animal { get; set; }
+
+        // cria um atributo para funcionar como FK, na BD e relaciona-o com o atributo anterior
+        [ForeignKey("Animal")]
+        public int AnimalFK { get; set; }
+
+        // criar a chave forasteira
+        // relaciona o objecto CONSULTA com um objecto VETERINARIO
+        public Veterinarios Veterinario { get; set; }
+
+        // cria um atributo para funcionar como FK, na BD e relaciona-o com o atributo anterior
+        [ForeignKey("Veterinario")]
+        public int VeterinarioFK { get; set; }
+        //**********************************
     }
 }

@@ -13,14 +13,17 @@ namespace _20160513_autenticacao.Models {
             ListaDeAnimais = new HashSet<Animais>();
         }
 
+
         [Key]
-        public int DonosID { get; set; }
+        public int DonoID { get; set; }
 
-        public string Nome { get; set; }
+        [Required]
+        public string Nome { set; get; }
 
+        [Required]
         public string NIF { get; set; }
 
-        // especificar que um DONO tem muitos Animais
+        // especificar que um DONO tem muitos ANIMAIS
         public ICollection<Animais> ListaDeAnimais { get; set; }
     }
 }

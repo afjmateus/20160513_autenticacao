@@ -10,7 +10,8 @@ namespace _20160513_autenticacao.Models {
 
         // criar o construtor desta classe e carregar a lista de Consultas
         public Animais() {
-            ListaDeConsultas = new HashSet<Consultas>();
+            // inicialização da lista de Consultas de um Animal
+            Consultas = new HashSet<Consultas>();
         }
 
         [Key]
@@ -30,20 +31,22 @@ namespace _20160513_autenticacao.Models {
 
         public float Peso { get; set; }
 
-        // Preenchimento facultativo
         public float? Altura { get; set; }
 
-        //**********************************
+
+        // **************************
         // criar a chave forasteira
-        // relaciona o objecto ANIMAL com um objecto DONO
+        // relaciona o objeto ANIMAL com um objeto DONO
         public Donos Dono { get; set; }
 
-        // cria um atributo para funcionar como FK, na BD e relaciona-o com o atributo anterior
+        // cria um atributo para funcionar como FK, na BD
+        // e relaciona-o com o atributo anterior
         [ForeignKey("Dono")]
         public int DonosFK { get; set; }
-        //**********************************
+        // **************************
 
-        // especificar que um Animal tem muitas Consultas
-        public ICollection<Consultas> ListaDeConsultas { get; set; }
+        // um ANIMAL tem uma coleção de CONSULTAS
+        public virtual ICollection<Consultas> Consultas { get; set; }
+
     }
 }

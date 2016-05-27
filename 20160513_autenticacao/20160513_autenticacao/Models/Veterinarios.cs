@@ -10,7 +10,7 @@ namespace _20160513_autenticacao.Models {
 
         // criar o construtor desta classe e carregar a lista de Consultas
         public Veterinarios() {
-            ListaDeConsultas = new HashSet<Consultas>();
+            Consultas = new HashSet<Consultas>();
         }
 
         [Key]
@@ -20,40 +20,40 @@ namespace _20160513_autenticacao.Models {
         [StringLength(30)]
         public string Nome { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Rua { get; set; }
 
-        [Required]
         [StringLength(10)]
         public string NumPorta { get; set; }
 
         [StringLength(10)]
         public string Andar { get; set; }
 
-        [Required]
         [StringLength(30)]
         public string CodPostal { get; set; }
 
-        [Required]
         [StringLength(9)]
         public string NIF { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime DataEntradaClinica { get; set; }
+        public DateTime? DataEntradaClinica { get; set; }
 
         [Required]
         [StringLength(30)]
         public string NumCedulaProf { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime DataInscOrdem { get; set; }
+        public DateTime? DataInscOrdem { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string Faculdade { get; set; }
 
-        // especificar que um Animal tem muitas Consultas
-        public ICollection<Consultas> ListaDeConsultas { get; set; }
+        public virtual ICollection<Consultas> Consultas { get; set; }
+
+
+        // atributo para relacionar Veterinário com o User-autenticação
+        // na prática, isto é uma FK, apesar de não o dizer
+        public string NomeDoUserName { get; set; }
+
     }
 }
